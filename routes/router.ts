@@ -12,10 +12,10 @@ router.get('/grafica', (req: Request, res: Response) => {
 });
 
 router.post('/grafica', (req: Request, res: Response) => {
-  const mes: string = req.body.mes;
-  const valor: number = parseInt(req.body.valor);
+  const opcion: number = parseInt(req.body.opcion);
+  const unidades: number = parseInt(req.body.unidades);
 
-  grafica.incrementarValor(mes, valor);
+  grafica.incrementarValor(opcion, unidades);
 
   const server = Server.instance;
   server.io.emit('cambio-grafica', grafica.getDataGrafica());
